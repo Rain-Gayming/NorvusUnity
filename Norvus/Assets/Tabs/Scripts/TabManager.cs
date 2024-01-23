@@ -13,7 +13,7 @@ namespace Norvus.UI.Tabs
 		{
             for (int i = 0; i < tabs.Count; i++)
             {
-				tabs[i].SetVisible(false);
+				tabs[i].gameObject.SetActive(false);
             }
         }
 
@@ -21,7 +21,7 @@ namespace Norvus.UI.Tabs
 		{
 			CloseAllTabs();
 
-			tab.SetVisible(true);
+			tab.gameObject.SetActive(true);
 		}
 	}
 }
