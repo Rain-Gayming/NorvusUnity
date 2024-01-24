@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 4285897453476124436}
   - component: {fileID: 480915307332379160}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Item Durability Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 1681121784871101843}
   - component: {fileID: 6928822567225963749}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Item Value Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -398,6 +398,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6711555577077246364}
+  - component: {fileID: 8225091285897118914}
   m_Layer: 5
   m_Name: Basic Item Slot
   m_TagString: Untagged
@@ -420,7 +421,6 @@ RectTransform:
   - {fileID: 510601217845853101}
   - {fileID: 6379464662285629091}
   - {fileID: 4529151267037092507}
-  - {fileID: 6496893386766389843}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -428,6 +428,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 820, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8225091285897118914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4858273827820053190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f352b0018db78a546b5842b44df650f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemNameText: {fileID: 567279824816781020}
+  item:
+    itemObject: {fileID: 0}
+    itemAmount: 0
 --- !u!1 &5122231925424460169
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +779,7 @@ GameObject:
   - component: {fileID: 2118982744181970193}
   - component: {fileID: 5628435974201600436}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Item Weight Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1006,68 +1022,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &7375643082022576051
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6496893386766389843}
-  - component: {fileID: 5136434919147896645}
-  m_Layer: 5
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &6496893386766389843
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7375643082022576051}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6711555577077246364}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 205, y: 0}
-  m_SizeDelta: {x: 410, y: 25}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5136434919147896645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7375643082022576051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!1 &7712563679786928106
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,7 +1034,7 @@ GameObject:
   - component: {fileID: 1898360709743769975}
   - component: {fileID: 567279824816781020}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Item Name Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1214,7 +1168,7 @@ GameObject:
   - component: {fileID: 1753216593311017695}
   - component: {fileID: 8094239507144126631}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Item Class Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1348,12 +1302,12 @@ GameObject:
   - component: {fileID: 4872989072495001654}
   - component: {fileID: 6896449077605841566}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Item Equipped Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6379464662285629091
 RectTransform:
   m_ObjectHideFlags: 0

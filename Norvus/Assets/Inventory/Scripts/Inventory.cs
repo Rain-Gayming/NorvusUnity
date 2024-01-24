@@ -51,7 +51,8 @@ namespace Norvus.Inventory
 				{
 					IItem item = new IItem();
 					item.itemObject = itemDatabase.itemsInDatabase[i];
-					items.Add(item);
+					AddItem(item);
+					break;
 				}
             }
         }
@@ -63,13 +64,21 @@ namespace Norvus.Inventory
 				item.itemAmount = 1;
 			}
 
-			if (!itemObjects.Contains(item.itemObject)){
+			if (!itemObjects.Contains(item.itemObject) || !item.itemObject.canStack){
 				AddNewItemSlot(item);
 			}
-			else
+			else if(itemObjects.Contains(item.itemObject) && item.itemObject.canStack)
 			{
-
-			}
+                for (int i = 0; i < items.Count; i++)
+                {
+					if (items[i].itemObject == item.itemObject)
+					{
+						items[i].itemAmount += item.itemAmount;
+						itemSlots[i].GetComponent<ItemSlot>().item = items[i];
+						itemSlots[i].GetComponent<ItemSlot>().UpdateItem(); 
+					}
+                }
+            }
 		}
 
 		public void AddNewItemSlot(IItem itemToAdd)
@@ -87,14 +96,11 @@ namespace Norvus.Inventory
 								GameObject newWeaponItemSlot = Instantiate(weaponItemSlot);
 								newWeaponItemSlot.transform.SetParent(inventoryTabs[i].grid.transform);
 								newWeaponItemSlot.transform.localScale = Vector3.one;
-							}
-							break;
-						case EItemType.armour:
-							if (itemToAdd.itemObject.armourType == inventoryTabs[i].armourType)
-							{
-								GameObject newArmourItemSlot = Instantiate(armourItemSlot);
-								newArmourItemSlot.transform.SetParent(inventoryTabs[i].grid.transform);
-								newArmourItemSlot.transform.localScale = Vector3.one;
+								newWeaponItemSlot.GetComponent<ItemSlot>().item = itemToAdd;
+
+								itemSlots.Add(newWeaponItemSlot);
+								itemObjects.Add(itemToAdd.itemObject);
+								items.Add(itemToAdd);
 							}
 							break;
 						case EItemType.consumable:
@@ -103,8 +109,11 @@ namespace Norvus.Inventory
 								GameObject newConsumableItemSlot = Instantiate(basicItemSlot);
 								newConsumableItemSlot.transform.SetParent(inventoryTabs[i].grid.transform);
 								newConsumableItemSlot.transform.localScale = Vector3.one;
-								print(newConsumableItemSlot);
-								print("Consumable Types are the same");
+								newConsumableItemSlot.GetComponent<ItemSlot>().item = itemToAdd;
+
+								itemSlots.Add(newConsumableItemSlot);
+								itemObjects.Add(itemToAdd.itemObject);
+								items.Add(itemToAdd);
 							}
 							break;
 						case EItemType.readable:
@@ -113,15 +122,37 @@ namespace Norvus.Inventory
 								GameObject newReadableItemSlot = Instantiate(basicItemSlot);
 								newReadableItemSlot.transform.SetParent(inventoryTabs[i].grid.transform);
 								newReadableItemSlot.transform.localScale = Vector3.one;
+								newReadableItemSlot.GetComponent<ItemSlot>().item = itemToAdd;
+
+								itemSlots.Add(newReadableItemSlot);
+								itemObjects.Add(itemToAdd.itemObject);
+								items.Add(itemToAdd);
 							}
 							break;
 						case EItemType.keys:
+							GameObject newKeyItemSlot = Instantiate(basicItemSlot);
+							newKeyItemSlot.transform.SetParent(inventoryTabs[i].grid.transform);
+							newKeyItemSlot.transform.localScale = Vector3.one;
+							newKeyItemSlot.GetComponent<ItemSlot>().item = itemToAdd;
+
+							itemSlots.Add(newKeyItemSlot);
+							itemObjects.Add(itemToAdd.itemObject);
+							items.Add(itemToAdd);
 							break;
 						case EItemType.misc:
+							GameObject newMiscItemSlot = Instantiate(basicItemSlot);
+							newMiscItemSlot.transform.SetParent(inventoryTabs[i].grid.transform);
+							newMiscItemSlot.transform.localScale = Vector3.one;
+							newMiscItemSlot.GetComponent<ItemSlot>().item = itemToAdd;
+
+							itemSlots.Add(newMiscItemSlot);
+							itemObjects.Add(itemToAdd.itemObject);
+							items.Add(itemToAdd);
 							break;
 						default:
 							break;
 					}
+					break;
 				}
 			}
         }

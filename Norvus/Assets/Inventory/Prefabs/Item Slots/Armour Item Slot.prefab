@@ -1,67 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &744051583639027589
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 558038202748434968}
-  - component: {fileID: 8943917905245591331}
-  m_Layer: 5
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &558038202748434968
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 744051583639027589}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2524507020488372638}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 205, y: 0}
-  m_SizeDelta: {x: 410, y: 25}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8943917905245591331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 744051583639027589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!1 &1411379858658626110
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,7 +254,7 @@ GameObject:
   - component: {fileID: 6611040042962857013}
   - component: {fileID: 6333395201755560404}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Item Class Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -450,7 +388,7 @@ GameObject:
   - component: {fileID: 5984110819230809736}
   - component: {fileID: 4777335513373583486}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Item Name Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -473,7 +411,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 29.428497, y: 0}
-  m_SizeDelta: {x: 420, y: 25}
+  m_SizeDelta: {x: 345.49, y: 25}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &5984110819230809736
 CanvasRenderer:
@@ -581,6 +519,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2524507020488372638}
+  - component: {fileID: -5686017801948270689}
   m_Layer: 5
   m_Name: Armour Item Slot
   m_TagString: Untagged
@@ -603,7 +542,6 @@ RectTransform:
   - {fileID: 3772873565969959696}
   - {fileID: 6191818359878675060}
   - {fileID: 5307185176699036964}
-  - {fileID: 558038202748434968}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -611,6 +549,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 820, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &-5686017801948270689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5298514977515588136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f352b0018db78a546b5842b44df650f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemNameText: {fileID: 4777335513373583486}
+  item:
+    itemObject: {fileID: 0}
+    itemAmount: 0
 --- !u!1 &6233919025916846396
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +577,7 @@ GameObject:
   - component: {fileID: 7646845233809529351}
   - component: {fileID: 5297158671286089154}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Item Armour Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -757,7 +711,7 @@ GameObject:
   - component: {fileID: 2700665145584075005}
   - component: {fileID: 6501257847180537983}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Item Weight Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1012,7 +966,7 @@ GameObject:
   - component: {fileID: 9024143836910921832}
   - component: {fileID: 5413414594918037771}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Item Value Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1267,7 +1221,7 @@ GameObject:
   - component: {fileID: 6714441355003782376}
   - component: {fileID: 7787957395915815220}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Item Durability Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1401,12 +1355,12 @@ GameObject:
   - component: {fileID: 6777359811987028558}
   - component: {fileID: 8621965625186498628}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Item Equipped Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6191818359878675060
 RectTransform:
   m_ObjectHideFlags: 0
