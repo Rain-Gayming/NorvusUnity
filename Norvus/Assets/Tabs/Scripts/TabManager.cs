@@ -9,13 +9,26 @@ namespace Norvus.UI.Tabs
 	{
 		public List<Tab> tabs;
 
+		private void Start()
+		{
+			OpenAllTabs();
+			OpenTab(tabs[0]);
+		}
+
 		public void CloseAllTabs()
 		{
-            for (int i = 0; i < tabs.Count; i++)
-            {
+			for (int i = 0; i < tabs.Count; i++)
+			{
 				tabs[i].gameObject.SetActive(false);
-            }
-        }
+			}
+		}
+		public void OpenAllTabs()
+		{
+			for (int i = 0; i < tabs.Count; i++)
+			{
+				tabs[i].gameObject.SetActive(true);
+			}
+		}
 
 		public void OpenTab(Tab tab)
 		{
