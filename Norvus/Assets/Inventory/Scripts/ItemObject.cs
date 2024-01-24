@@ -18,6 +18,9 @@ namespace Norvus.Inventory
 		public EWeaponType weaponType;
 		[BoxGroup("Item Type")] [ShowIf("itemType", EItemType.armour, true)]
 		public EArmourType armourType;
+		[BoxGroup("Item Type")]	[ShowIf("itemType", EItemType.armour, true)]
+		public int armourValue;
+
 		[BoxGroup("Item Type")] [ShowIf("itemType", EItemType.consumable, true)]
 		public EConsumablesType consumablesType;
 		[BoxGroup("Item Type")]	[ShowIf("itemType", EItemType.readable, true)]

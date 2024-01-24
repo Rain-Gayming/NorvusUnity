@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62bbce5d3213d3640ab636b4b7c09a75, type: 3}
-  m_Name: IWS_Iron Shortsword
+  m_Name: IAHm_Imperial Helmet
   m_EditorClassIdentifier: 
-  itemName: Iron Shortsword
+  itemName: 
   canStack: 0
   itemType: 0
   weaponType: 0
   armourType: 0
+  armourValue: 0
   consumablesType: 0
   readableType: 0
