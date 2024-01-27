@@ -32,13 +32,8 @@ namespace Norvus.Crafting
 
 		public void CraftItem()
 		{
-			bool[] hasRightItems = new bool[recipe.inputItems.Count];
-            for (int i = 0; i < hasRightItems.Length; i++)
-            {
-				hasRightItems[i] = false;
-            }
-
-            for (int i = 0; i < recipe.inputItems.Count; i++)
+			int hasItems = 0;
+			for (int i = 0; i < recipe.inputItems.Count; i++)
             {
 				if (playerInventory.itemObjects.Contains(recipe.inputItems[i].itemObject))
 				{
@@ -46,23 +41,12 @@ namespace Norvus.Crafting
 
 					if (playerInventory.items[itemLocation].itemAmount >= recipe.inputItems[i].itemAmount)
 					{
-						hasRightItems[i] = true;
+						hasItems++;
 					}
 				}
             }
 
-			int truers = 0;
-            for (int i = 0; i < hasRightItems.Length; i++)
-            {
-				if (hasRightItems[i] == true)
-				{
-					truers++;
-				}
-            }
-
-			print(truers);
-
-			if(truers >= recipe.inputItems.Count)
+			if(hasItems >= recipe.inputItems.Count)
 			{
 				for (int i = 0; i < recipe.inputItems.Count; i++)
 				{
