@@ -124,6 +124,7 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Norvus.UI.Tabs.TabManager, Assembly-CSharp
         m_MethodName: OpenTab
         m_Mode: 2
+        m_Arguments:
           m_ObjectArgument: {fileID: 1912446657085230807}
           m_ObjectArgumentAssemblyTypeName: Norvus.UI.Tabs.Tab, Assembly-CSharp
           m_IntArgument: 0
