@@ -16,6 +16,9 @@ namespace Norvus.Inventory
 		public EItemType itemType;
 		[BoxGroup("Item Type")] [ShowIf("itemType", EItemType.weapon, true)]
 		public EWeaponType weaponType;
+		[BoxGroup("Item Type")] [ShowIf("itemType", EItemType.weapon, true)]
+		public int damageValue;
+
 		[BoxGroup("Item Type")] [ShowIf("itemType", EItemType.armour, true)]
 		public EArmourType armourType;
 		[BoxGroup("Item Type")]	[ShowIf("itemType", EItemType.armour, true)]
@@ -25,6 +28,9 @@ namespace Norvus.Inventory
 		public EConsumablesType consumablesType;
 		[BoxGroup("Item Type")]	[ShowIf("itemType", EItemType.readable, true)]
 		public EReadableTypes readableType;
+
+		[BoxGroup("Item Type")] [ShowIf("itemType", EItemType.misc, true)]
+		public EMiscTypes miscType;
 
 		private void Awake()
 		{

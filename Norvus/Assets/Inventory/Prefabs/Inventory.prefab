@@ -17183,7 +17183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29975a0b2d80b8418d3528142050104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  equipmentManager: {fileID: 0}
   items: []
+  itemObjects: []
   itemDatabase: {fileID: 11400000, guid: 0fc8c8a8f14e033499f5aaa95f788205, type: 2}
   inventoryTabs:
   - {fileID: 6787114281864869800}
@@ -17214,7 +17217,12 @@ MonoBehaviour:
   - {fileID: 8879501554219468931}
   - {fileID: 5359461073224642826}
   - {fileID: 9040079763977270222}
-  basicItemSlot: {fileID: 4858273827820053190, guid: 253f321dc4ebb524bb94b3ebd1fc9c89,
+  itemSlots: []
+  basicItemSlot: {fileID: 5298514977515588136, guid: 33ddc0b2de89196428e6988d32f4dba0,
+    type: 3}
+  weaponItemSlot: {fileID: 5298514977515588136, guid: 33ddc0b2de89196428e6988d32f4dba0,
+    type: 3}
+  armourItemSlot: {fileID: 5298514977515588136, guid: 33ddc0b2de89196428e6988d32f4dba0,
     type: 3}
   itemTextID: {fileID: 3075765553384333258}
 --- !u!1 &6794358886723754284

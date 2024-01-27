@@ -9,15 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62bbce5d3213d3640ab636b4b7c09a75, type: 3}
-  m_Name: IWS_Iron Shortsword
+  m_Script: {fileID: 11500000, guid: 5be6770b3e93a174481704560f389cd3, type: 3}
+  m_Name: CraftingRecipeDatabase
   m_EditorClassIdentifier: 
-  itemName: Iron Shortsword
-  canStack: 0
-  itemType: 0
-  weaponType: 0
-  damageValue: 15
-  armourType: 0
-  armourValue: 0
-  consumablesType: 0
-  readableType: 0
+  recipes:
+  - {fileID: 11400000, guid: 6b4a265a46875b34a984189a7a4f8727, type: 2}

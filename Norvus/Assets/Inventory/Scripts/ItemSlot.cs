@@ -14,6 +14,10 @@ namespace Norvus.Inventory
 
 		[BoxGroup("UI")]
 		public TMP_Text itemNameText;
+		[BoxGroup("UI")]
+		public TMP_Text miscValueText;
+		[BoxGroup("UI")]
+		public TMP_Text classText;
 
 		[BoxGroup("Item")]
 		public IItem item;
@@ -29,6 +33,45 @@ namespace Norvus.Inventory
 			if(item.itemAmount > 1)
 			{
 				itemNameText.text = itemNameText.text + " (" + item.itemAmount + ")"; 
+			}
+			
+			if(item.itemObject.itemType == EItemType.weapon)
+			{
+				miscValueText.text = item.itemObject.damageValue.ToString();
+				miscValueText.gameObject.SetActive(true);
+			}
+			else if (item.itemObject.itemType == EItemType.armour)
+			{
+				miscValueText.text = item.itemObject.armourValue.ToString();
+				miscValueText.gameObject.SetActive(true);
+			}
+			else
+			{
+				miscValueText.gameObject.SetActive(false);
+			}
+
+			switch (item.itemObject.itemType)
+			{
+				case EItemType.weapon:
+					classText.text = item.itemObject.weaponType.ToString();
+					break;
+				case EItemType.armour:
+					classText.text = item.itemObject.armourType.ToString();
+					break;
+				case EItemType.consumable:
+					classText.text = item.itemObject.consumablesType.ToString();
+					break;
+				case EItemType.readable:
+					classText.text = item.itemObject.readableType.ToString();
+					break;
+				case EItemType.keys:
+					classText.text = item.itemObject.itemType.ToString();
+					break;
+				case EItemType.misc:
+					classText.text = item.itemObject.miscType.ToString();
+					break;
+				default:
+					break;
 			}
 		}
 

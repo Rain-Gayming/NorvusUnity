@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62bbce5d3213d3640ab636b4b7c09a75, type: 3}
-  m_Name: IAC_Blacksmith's Robes
+  m_Name: IAHm_Imperial Helmet
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Imperial Helmet
   canStack: 0
-  itemType: 0
+  itemType: 1
   weaponType: 0
-  armourType: 0
-  armourValue: 0
+  damageValue: 0
+  armourType: 1
+  armourValue: 15
   consumablesType: 0
   readableType: 0

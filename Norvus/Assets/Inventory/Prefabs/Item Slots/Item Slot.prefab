@@ -654,7 +654,7 @@ GameObject:
   - component: {fileID: -5686017801948270689}
   - component: {fileID: 7800253926390035775}
   m_Layer: 5
-  m_Name: Armour Item Slot
+  m_Name: Item Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -697,6 +697,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedInventory: {fileID: 0}
   itemNameText: {fileID: 4777335513373583486}
+  miscValueText: {fileID: 5297158671286089154}
+  classText: {fileID: 6333395201755560404}
   item:
     itemObject: {fileID: 0}
     itemAmount: 0
@@ -721,9 +723,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 0.25490198}
+    m_PressedColor: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 0.25490198}
     m_SelectedColor: {r: 1, g: 1, b: 1, a: 0}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1

@@ -21,7 +21,7 @@ namespace Norvus.Inventory
 		mace,
 		spear,
 		bow,
-		crossBow,
+		crossbow,
 		throwable
 	}
 
@@ -54,5 +54,13 @@ namespace Norvus.Inventory
 		journel,
 		note,
 		scroll
+	}
+
+	public enum EMiscTypes
+	{
+		misc,
+		soulGem,
+		bone,
+		gem,
 	}
 }

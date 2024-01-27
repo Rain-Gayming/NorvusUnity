@@ -401,6 +401,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1989773653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1989773655}
+  - component: {fileID: 1989773654}
+  m_Layer: 0
+  m_Name: Equipment Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1989773654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989773653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c6d71356e34b424abb1aa6b5c5d7499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armourValue: 0
+  clothingItem:
+    itemObject: {fileID: 0}
+    itemAmount: 0
+  helmetItem:
+    itemObject: {fileID: 0}
+    itemAmount: 0
+  hatItem:
+    itemObject: {fileID: 0}
+    itemAmount: 0
+  chestItem:
+    itemObject: {fileID: 0}
+    itemAmount: 0
+  mailItem:
+    itemObject: {fileID: 0}
+    itemAmount: 0
+  legItem:
+    itemObject: {fileID: 0}
+    itemAmount: 0
+  legMailItem:
+    itemObject: {fileID: 0}
+    itemAmount: 0
+  bootsItem:
+    itemObject: {fileID: 0}
+    itemAmount: 0
+  glovesItem:
+    itemObject: {fileID: 0}
+    itemAmount: 0
+  gauntletsItem:
+    itemObject: {fileID: 0}
+    itemAmount: 0
+--- !u!4 &1989773655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989773653}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8034746623946199234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1432,7 +1507,7 @@ PrefabInstance:
     - target: {fileID: 5594774087087043548, guid: a5ac0fce794d4bd45a06fe4d10fdd444,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5667867519888588436, guid: a5ac0fce794d4bd45a06fe4d10fdd444,
         type: 3}
@@ -1628,7 +1703,7 @@ PrefabInstance:
         type: 3}
       propertyPath: armourItemSlot
       value: 
-      objectReference: {fileID: 4858273827820053190, guid: 253f321dc4ebb524bb94b3ebd1fc9c89,
+      objectReference: {fileID: 5298514977515588136, guid: 33ddc0b2de89196428e6988d32f4dba0,
         type: 3}
     - target: {fileID: 6677947829571852301, guid: a5ac0fce794d4bd45a06fe4d10fdd444,
         type: 3}
@@ -1636,6 +1711,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9016400393074780756, guid: 5648c3b608ebb2344bcf7436fa019aad,
         type: 3}
+    - target: {fileID: 6677947829571852301, guid: a5ac0fce794d4bd45a06fe4d10fdd444,
+        type: 3}
+      propertyPath: equipmentManager
+      value: 
+      objectReference: {fileID: 1989773654}
     - target: {fileID: 6691425951264485751, guid: a5ac0fce794d4bd45a06fe4d10fdd444,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2329,3 +2409,4 @@ SceneRoots:
   - {fileID: 900071848}
   - {fileID: 8034746623946199234}
   - {fileID: 987230867}
+  - {fileID: 1989773655}
