@@ -14,6 +14,8 @@ namespace Norvus.Cameras
 		[BoxGroup("References")]
 		public Transform targetTransform;
 		[BoxGroup("References")]
+		public Transform cameraTransform;
+		[BoxGroup("References")]
 		public Transform cameraPivot;
 
 		[BoxGroup("Camera Speeds")]
@@ -23,6 +25,14 @@ namespace Norvus.Cameras
 		[BoxGroup("Camera Speeds")]
 		public float pivotSpeed;
 
+		[BoxGroup("Collision")]
+		public float cameraCollisionRadius = 0.2f;
+		[BoxGroup("Collision")]
+		public float cameraCollisionOffset = 0.2f;
+		[BoxGroup("Collision")]
+		public float minimumCollisionOffset = 0.2f;
+		[BoxGroup("Collision")]
+		public LayerMask cameraCollisonLayers;
 
 		[BoxGroup("Rotation")]
 		public float lookAngle;
@@ -30,8 +40,17 @@ namespace Norvus.Cameras
 		public float pivotAngle;
 
 		[BoxGroup("Camera Info")]
+		public float defaultPosition;
+		[BoxGroup("Camera Info")]
+		public Vector3 cameraVectorPosition;
+		[BoxGroup("Camera Info")]
 		public Vector3 cameraFollowVelocity;
 
+
+		private void Start()
+		{
+			defaultPosition = cameraTransform.localPosition.z;
+		}
 
 		private void Update()
 		{
@@ -68,7 +87,24 @@ namespace Norvus.Cameras
 
 		public void HandleCollisions()
 		{
+			float targetPosition = defaultPosition;
+			RaycastHit hit;
+			Vector3 direction = cameraTransform.position - cameraPivot.position;
+			direction.Normalize(); 
 
+			if(Physics.SphereCast(cameraPivot.transform.position, cameraCollisionRadius, direction, out hit, Mathf.Abs(targetPosition), cameraCollisonLayers))
+			{
+				float distance = Vector3.Distance(cameraPivot.position, hit.point);
+				targetPosition = targetPosition - (distance - cameraCollisionOffset);
+			}
+
+			if(Mathf.Abs(targetPosition) < minimumCollisionOffset)
+			{
+				targetPosition = targetPosition - minimumCollisionOffset;
+			}
+
+			cameraVectorPosition.z = Mathf.Lerp(cameraTransform.localPosition.z, targetPosition, 0.2f);
+			cameraTransform.localPosition = cameraVectorPosition;
 		}
 	}
 }
