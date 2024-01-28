@@ -12,6 +12,10 @@ namespace Norvus.Inputs
 		[BoxGroup("Movement")]
 		public Vector2 movement;
 
+
+		[BoxGroup("Camera")]
+		public Vector2 look;
+
 		public void Start()
 		{
 			inputs = new PlayerInputs();
@@ -21,6 +25,7 @@ namespace Norvus.Inputs
 		public void Update()
 		{
 			movement = inputs.Movement.movement.ReadValue<Vector2>();
+			look = inputs.Camera.Look.ReadValue<Vector2>();
 		}
 	}
 }

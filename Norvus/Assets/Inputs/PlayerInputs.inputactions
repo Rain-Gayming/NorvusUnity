@@ -85,14 +85,14 @@
             ]
         },
         {
-            "name": "New action map1",
+            "name": "Camera",
             "id": "1e08d66f-4c58-4d39-9f46-9ccdd191cb43",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "Button",
+                    "name": "Look",
+                    "type": "PassThrough",
                     "id": "1339dcb6-7e02-4aef-9805-aee694dd388e",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -102,11 +102,22 @@
                 {
                     "name": "",
                     "id": "5c1912e3-a2a8-43aa-a1f2-1f582591f5b0",
-                    "path": "",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "New action",
+                    "groups": "KBM",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3767e716-62ea-4903-b25c-c3ab6bfd610d",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controler",
+                    "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

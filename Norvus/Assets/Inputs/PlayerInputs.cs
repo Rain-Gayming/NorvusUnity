@@ -107,14 +107,14 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""New action map1"",
+            ""name"": ""Camera"",
             ""id"": ""1e08d66f-4c58-4d39-9f46-9ccdd191cb43"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
+                    ""name"": ""Look"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""1339dcb6-7e02-4aef-9805-aee694dd388e"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -124,11 +124,22 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5c1912e3-a2a8-43aa-a1f2-1f582591f5b0"",
-                    ""path"": """",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
+                    ""groups"": ""KBM"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3767e716-62ea-4903-b25c-c3ab6bfd610d"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controler"",
+                    ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -168,9 +179,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         // Movement
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_movement = m_Movement.FindAction("movement", throwIfNotFound: true);
-        // New action map1
-        m_Newactionmap1 = asset.FindActionMap("New action map1", throwIfNotFound: true);
-        m_Newactionmap1_Newaction = m_Newactionmap1.FindAction("New action", throwIfNotFound: true);
+        // Camera
+        m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
+        m_Camera_Look = m_Camera.FindAction("Look", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -275,51 +286,51 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     }
     public MovementActions @Movement => new MovementActions(this);
 
-    // New action map1
-    private readonly InputActionMap m_Newactionmap1;
-    private List<INewactionmap1Actions> m_Newactionmap1ActionsCallbackInterfaces = new List<INewactionmap1Actions>();
-    private readonly InputAction m_Newactionmap1_Newaction;
-    public struct Newactionmap1Actions
+    // Camera
+    private readonly InputActionMap m_Camera;
+    private List<ICameraActions> m_CameraActionsCallbackInterfaces = new List<ICameraActions>();
+    private readonly InputAction m_Camera_Look;
+    public struct CameraActions
     {
         private @PlayerInputs m_Wrapper;
-        public Newactionmap1Actions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Newactionmap1_Newaction;
-        public InputActionMap Get() { return m_Wrapper.m_Newactionmap1; }
+        public CameraActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Look => m_Wrapper.m_Camera_Look;
+        public InputActionMap Get() { return m_Wrapper.m_Camera; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(Newactionmap1Actions set) { return set.Get(); }
-        public void AddCallbacks(INewactionmap1Actions instance)
+        public static implicit operator InputActionMap(CameraActions set) { return set.Get(); }
+        public void AddCallbacks(ICameraActions instance)
         {
-            if (instance == null || m_Wrapper.m_Newactionmap1ActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_Newactionmap1ActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            if (instance == null || m_Wrapper.m_CameraActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CameraActionsCallbackInterfaces.Add(instance);
+            @Look.started += instance.OnLook;
+            @Look.performed += instance.OnLook;
+            @Look.canceled += instance.OnLook;
         }
 
-        private void UnregisterCallbacks(INewactionmap1Actions instance)
+        private void UnregisterCallbacks(ICameraActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @Look.started -= instance.OnLook;
+            @Look.performed -= instance.OnLook;
+            @Look.canceled -= instance.OnLook;
         }
 
-        public void RemoveCallbacks(INewactionmap1Actions instance)
+        public void RemoveCallbacks(ICameraActions instance)
         {
-            if (m_Wrapper.m_Newactionmap1ActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_CameraActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(INewactionmap1Actions instance)
+        public void SetCallbacks(ICameraActions instance)
         {
-            foreach (var item in m_Wrapper.m_Newactionmap1ActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_CameraActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_Newactionmap1ActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_CameraActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public Newactionmap1Actions @Newactionmap1 => new Newactionmap1Actions(this);
+    public CameraActions @Camera => new CameraActions(this);
     private int m_KBMSchemeIndex = -1;
     public InputControlScheme KBMScheme
     {
@@ -342,8 +353,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
     }
-    public interface INewactionmap1Actions
+    public interface ICameraActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
 }
