@@ -35,6 +35,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""4dbd8c7e-d5ff-4858-a32a-f9ad01880697"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -44,7 +53,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Controler"",
+                    ""groups"": ""Controller"",
                     ""action"": ""movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -103,6 +112,28 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f5eb6138-7e14-4021-a080-d1f0be8d3209"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KBM"",
+                    ""action"": ""jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1761597e-cef8-46b2-9b7f-1fc75e3b5670"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -138,7 +169,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Controler"",
+                    ""groups"": ""Controller"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -164,8 +195,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Controler"",
-            ""bindingGroup"": ""Controler"",
+            ""name"": ""Controller"",
+            ""bindingGroup"": ""Controller"",
             ""devices"": [
                 {
                     ""devicePath"": ""<Gamepad>"",
@@ -179,6 +210,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         // Movement
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_movement = m_Movement.FindAction("movement", throwIfNotFound: true);
+        m_Movement_jump = m_Movement.FindAction("jump", throwIfNotFound: true);
         // Camera
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_Look = m_Camera.FindAction("Look", throwIfNotFound: true);
@@ -244,11 +276,13 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Movement;
     private List<IMovementActions> m_MovementActionsCallbackInterfaces = new List<IMovementActions>();
     private readonly InputAction m_Movement_movement;
+    private readonly InputAction m_Movement_jump;
     public struct MovementActions
     {
         private @PlayerInputs m_Wrapper;
         public MovementActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @movement => m_Wrapper.m_Movement_movement;
+        public InputAction @jump => m_Wrapper.m_Movement_jump;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -261,6 +295,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @movement.started += instance.OnMovement;
             @movement.performed += instance.OnMovement;
             @movement.canceled += instance.OnMovement;
+            @jump.started += instance.OnJump;
+            @jump.performed += instance.OnJump;
+            @jump.canceled += instance.OnJump;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
@@ -268,6 +305,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @movement.started -= instance.OnMovement;
             @movement.performed -= instance.OnMovement;
             @movement.canceled -= instance.OnMovement;
+            @jump.started -= instance.OnJump;
+            @jump.performed -= instance.OnJump;
+            @jump.canceled -= instance.OnJump;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -340,18 +380,19 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_KBMSchemeIndex];
         }
     }
-    private int m_ControlerSchemeIndex = -1;
-    public InputControlScheme ControlerScheme
+    private int m_ControllerSchemeIndex = -1;
+    public InputControlScheme ControllerScheme
     {
         get
         {
-            if (m_ControlerSchemeIndex == -1) m_ControlerSchemeIndex = asset.FindControlSchemeIndex("Controler");
-            return asset.controlSchemes[m_ControlerSchemeIndex];
+            if (m_ControllerSchemeIndex == -1) m_ControllerSchemeIndex = asset.FindControlSchemeIndex("Controller");
+            return asset.controlSchemes[m_ControllerSchemeIndex];
         }
     }
     public interface IMovementActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
     public interface ICameraActions
     {

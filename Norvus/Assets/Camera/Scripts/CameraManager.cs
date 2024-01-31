@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Properties;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Norvus.Cameras
@@ -32,9 +33,11 @@ namespace Norvus.Cameras
 		[BoxGroup("Collision")]
 		public float minimumCollisionOffset = 0.2f;
 		[BoxGroup("Collision")]
+		public float collisionRange;
+		[BoxGroup("Collision")]
 		public LayerMask cameraCollisonLayers;
 
-		[BoxGroup("Rotation")]
+		[BoxGroup("Rotation")]	
 		public float lookAngle;
 		[BoxGroup("Rotation")]
 		public float pivotAngle;
@@ -89,6 +92,7 @@ namespace Norvus.Cameras
 		{
 			float targetPosition = defaultPosition;
 			RaycastHit hit;
+			RaycastHit colHit;
 			Vector3 direction = cameraTransform.position - cameraPivot.position;
 			direction.Normalize(); 
 
