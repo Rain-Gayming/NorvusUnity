@@ -26,8 +26,11 @@ namespace Norvus.Health
 			equipmentManager = GetComponent<EquipmentManager>();
 
 			currentHealth = maxHealth;
-			healthSlider.maxValue = maxHealth; 
-			healthSlider.value = currentHealth;
+			if (healthSlider)
+			{
+				healthSlider.maxValue = maxHealth;
+				healthSlider.value = currentHealth;
+			}
 		}
 
 		[Button]
@@ -38,12 +41,14 @@ namespace Norvus.Health
 				float damageTaken = (healthChange - equipmentManager.armourValue) * 0.75f;
 
 				currentHealth -= damageTaken;
+				if(healthSlider)
 				healthSlider.value = currentHealth;
 			}
 			else
 			{
 				currentHealth += healthChange;
-				healthSlider.value = currentHealth;
+				if (healthSlider)
+					healthSlider.value = currentHealth;
 			}
 		}
 	}

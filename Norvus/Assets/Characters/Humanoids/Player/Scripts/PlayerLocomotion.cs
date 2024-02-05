@@ -52,6 +52,9 @@ namespace Norvus.Player
 		[BoxGroup("Falling")]
 		public float inAirTime;
 
+		[BoxGroup("Fall Damage")]
+		public float fallDamageTime;
+
 		[BoxGroup("Rotation")]
 		public float rotationSpeed;
 		[BoxGroup("Rotation")]
@@ -67,6 +70,7 @@ namespace Norvus.Player
 
 		public void Awake()
 		{
+			playerManager.playerCursorManager.ToggleCursor(false);
 			HandleSwitchMoveType(EMovementType.running);
 		}
 
@@ -101,9 +105,11 @@ namespace Norvus.Player
 			//animationManager.animator.SetBool("isJumping", true);
 			//animationManager.PlayTargetAnimation("Jump", false);
 
+			print("Jump");
+
 			float jumpVelocity = Mathf.Sqrt(-2 * gravity * jumpHeight);
 			Vector3 playerVelocity = moveDirection;
-			playerVelocity.y = jumpVelocity;
+			playerVelocity.y += jumpVelocity;
 			rb.velocity = playerVelocity;
 
 			inputManager.jump = false;
@@ -148,9 +154,23 @@ namespace Norvus.Player
 				if(inAirTime != 0)
 				{
 					//play landing animation
+
+					if(inAirTime > fallDamageTime)
+					{
+						CalculateFallDamage();
+					}
+
 					inAirTime = 0;
 				}
 			}
+		}
+
+		public void CalculateFallDamage()
+		{
+			float totalFallDamage = inAirTime * 10;
+			totalFallDamage = totalFallDamage - (totalFallDamage % playerManager.playerEquipmentManager.fallDamageResistance);
+
+			playerManager.playerHealthManager.ChangeHealth(totalFallDamage, true);
 		}
 
 		public void HandleRotation()

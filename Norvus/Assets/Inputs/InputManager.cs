@@ -1,3 +1,4 @@
+using Norvus.Player;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,11 +9,16 @@ namespace Norvus.Inputs
 	public class InputManager : MonoBehaviour
 	{
 		public PlayerInputs inputs;
+		[BoxGroup("Refernces")]
+		public PlayerManager playerManager;
+
 
 		[BoxGroup("Movement")]
 		public Vector2 movement;
 		[BoxGroup("Movement")]
 		public bool jump;
+		[BoxGroup("Movement")]
+		public float moveAmount;
 
 
 		[BoxGroup("Camera")]
@@ -31,6 +37,10 @@ namespace Norvus.Inputs
 
 			inputs.Movement.jump.performed += _ => jump = true;
 			inputs.Movement.jump.canceled += _ => jump = false;
+
+			moveAmount = Mathf.Clamp01(Mathf.Abs(movement.x) + Mathf.Abs(movement.y));
+			playerManager.playerAnimationHandler.UpdateAnimatorValues(moveAmount, 0, false);
+
 		}
 	}
 }

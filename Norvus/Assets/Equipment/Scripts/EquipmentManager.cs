@@ -10,7 +10,16 @@ namespace Norvus.Equipment
 	{
 
 		[BoxGroup("Stats")]
+		[Range(0.1f, 100)]
+		public float fallDamageResistance;
+		[BoxGroup("Stats")]
+		[Range(1f, 1000)]
 		public int armourValue;
+
+		[BoxGroup("Hands")]
+		public IItem leftHandItem;
+		[BoxGroup("Hands")]
+		public IItem rightHandItem;
 
 		[BoxGroup("Armour")]
 		public IItem clothingItem;

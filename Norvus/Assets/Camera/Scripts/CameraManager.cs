@@ -1,4 +1,5 @@
 using Norvus.Inputs;
+using Norvus.Player;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
